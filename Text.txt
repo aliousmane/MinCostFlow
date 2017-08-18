@@ -1,0 +1,47 @@
+typedef unsigned int    Index;           ///< index of a node or arc ( >= 0 )
+ typedef Index          *Index_Set;       ///< set (array) of indices
+ typedef const Index    cIndex;           ///< a read-only index
+ typedef cIndex        *cIndex_Set;       ///< read-only index array
+
+/*--------------------------------------------------------------------------*/
+
+ typedef int             SIndex;           ///< index of a node or arc 
+ typedef SIndex         *SIndex_Set;       ///< set (array) of indices
+ typedef const SIndex   cSIndex;           ///< a read-only index
+ typedef cSIndex       *cSIndex_Set;       ///< read-only index array
+
+/*--------------------------------------------------------------------------*/
+
+ typedef double          FNumber;        ///< type of arc flow
+ typedef FNumber        *FRow;           ///< vector of flows
+ typedef const FNumber  cFNumber;        ///< a read-only flow
+ typedef cFNumber      *cFRow;           ///< read-only flow array
+
+/*--------------------------------------------------------------------------*/
+
+ typedef double          CNumber;        ///< type of arc flow cost
+ typedef CNumber        *CRow;           ///< vector of costs
+ typedef const CNumber  cCNumber;        ///< a read-only cost
+ typedef cCNumber      *cCRow;           ///< read-only cost array
+
+  virtual void LoadNet( cIndex nmx = 0 , cIndex mmx = 0 , cIndex pn = 0 ,
+                         cIndex pm = 0 , cFRow pU = NULL , cCRow pC = NULL ,
+                         cFRow pDfct = NULL , cIndex_Set pSn = NULL ,
+                         cIndex_Set pEn = NULL ) = 0;
+- pn     is the current number of nodes of the network (<= nmax).
+   - pm     is the number of arcs of the network (<= mmax).
+
+   - pU     is the m-vector of the arc upper capacities; capacities must be
+            nonnegative, but can in principle be infinite (== F_INF); passing
+            pU == NULL means that all capacities are infinite;
+
+   - pC     is the m-vector of the arc costs; costs must be finite (< C_INF);
+            passing pC == NULL means that all costs must be 0.
+
+   - pDfct  is the n-vector of the node deficits; source nodes have negative
+            deficits and sink nodes have positive deficits; passing pDfct ==
+            NULL means that all deficits must be 0 (a circulation problem);
+
+   - pSn    is the m-vector of the arc starting nodes; pSn == NULL is in
+            principle not allowed, unless the topology of the graph is fixed;
+   - pEn    is the m-vector of the arc ending nodes; same comments as for pSn.
