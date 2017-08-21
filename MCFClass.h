@@ -1895,12 +1895,12 @@ inline void MCFClass::LoadDMX( istream &DMXs , bool IsQuad )
 {
  // read first non-comment line - - - - - - - - - - - - - - - - - - - - - - -
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+	
  char c;
  for(;;) {
   if( ! ( DMXs >> c ) )
    throw( MCFException( "LoadDMX: error reading the input stream" ) );
-
+  cout << c;
   if( c != 'c' )  // if it's not a comment
    break;
 
@@ -1913,17 +1913,19 @@ inline void MCFClass::LoadDMX( istream &DMXs , bool IsQuad )
  if( c != 'p' )
   throw( MCFException( "LoadDMX: format error in the input stream" ) );
 
- char buf[ 3 ];    // free space
+ char buf[4];    // free space
  DMXs >> buf;     // skip (in has to be "min")
-
+ for (int k = 0; k < 4; k++)
+	 cout << buf[k] ;
  Index tn;
+ 
  if( ! ( DMXs >> tn ) )
   throw( MCFException( "LoadDMX: error reading number of nodes" ) );
-
+ cout << tn << endl;;
  Index tm;
  if( ! ( DMXs >> tm ) )
   throw( MCFException( "LoadDMX: error reading number of arcs" ) );
-
+ cout << tm<<endl;
  // allocate memory - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -2032,7 +2034,8 @@ inline void MCFClass::LoadDMX( istream &DMXs , bool IsQuad )
 
  // call LoadNet- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
+ for (int k = 0; k < 4; k++)
+	 cout<<to_string(tC[k])<<endl ;
  LoadNet( tn , tm , tn , tm , tU , tC , tDfct , tStartn , tEndn );
 
  // then pass quadratic costs, if any
