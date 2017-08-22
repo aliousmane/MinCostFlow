@@ -10,7 +10,7 @@
 #include <iostream>
 //#include "stdafx.h"
 #include "MCFSimplex.h"
-
+#include "MCFClass.h"
 
 int main(int arg, char ** argv)
 {
@@ -32,7 +32,7 @@ int main(int arg, char ** argv)
 	MCFClass::FRow F = new double[4];
 	MCFClass::Index_Set nms = new unsigned int[4];
 	std::filebuf fb;
-	if (fb.open("C:\\Users\\A.K.J\\Documents\\Visual Studio 2013\\Projects\\minflow\\Input1.csv", std::ios::in))
+	if (fb.open("Input1.txt", std::ios::in))
 	{
 		std::istream is(&fb);
 		

@@ -2034,8 +2034,8 @@ inline void MCFClass::LoadDMX( istream &DMXs , bool IsQuad )
 
  // call LoadNet- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- for (int k = 0; k < 4; k++)
-	 cout<<to_string(tC[k])<<endl ;
+ //for (int k = 0; k < 4; k++)
+	// cout<<to_string(tC[k])<<endl ;
  LoadNet( tn , tm , tn , tm , tU , tC , tDfct , tStartn , tEndn );
 
  // then pass quadratic costs, if any
