@@ -329,9 +329,9 @@ public class Construction
                                 content2+="De:id,De:type,De:Operation,De:Time,Vers:id,Vers:type,Vers:Operation,Vers:Time"+"\n";
                 for(int i=0;i<nbnoeuds;i++)
                 	for(Arc a : g.Adjacents(i))
-					 {	mycontent += "a "+a.getDe().getId()+","+a.getVers().getId()+","+
+					 {	mycontent += "a "+(a.getDe().getId()+)1+","+(a.getVers().getId()+1)+","+
 					 	 	a.getLb()+","+a.getUb()+","+a.getCost()+"\n";
-						content2 +=a.getDe().getId()+","+a.getDe().getType()+","+a.getDe().getOp()+","+a.getDe().getTime()+","+a.getVers().getId()+
+						content2 +=(a.getDe().getId()+1)+","+(a.getDe().getType()+1)+","+a.getDe().getOp()+","+a.getDe().getTime()+","+a.getVers().getId()+
 							","+a.getVers().getType()+","+a.getVers().getOp()+","+a.getVers().getTime()+"\n";
 					}
 					 
